@@ -9,34 +9,25 @@ export default class App extends Component {
       todo: []
     };
     this.handleAdd = this.handleAdd.bind(this);
-    this.handleRemove = this.handleRemove.bind(this);
   }
 
   // データ保存
   handleAdd(e) {
-    e.preventDefault(); //これを書かないとリダイレクトされてしまう
-    //ファームから受けとったデータをオブジェクトに挿入して、stateのtodo配列に追加
-    this.state.todo.push({ title: e.target.title.value });//まだ保存されていない
-    this.setState({ todo: this.state.todo });//保存完了
-    //inputのvalueを空に
-    e.target.titile.value = '';
-  }
-
-  //データ消去
-  handleRemove(i) {
-    //todo配列からi番目から1つ目のデータを除外
-    this.state.todo.splice(i, 1);
-    //setStateでtodo配列を上書き
+    e.preventDefault();
+    // フォームから受け取ったデータをオブジェクトに挿入して、stateのtodo配列に追加
+    this.state.todo.push({ title: e.target.title.value });
+    // setStateを使ってstateを上書き
     this.setState({ todo: this.state.todo });
+    // inputのvalueを空に
+    e.target.title.value = '';
   }
-
   render() {
     return (
       <div className="siimple-box siimple--bg-dark">
         <h1 className="siimple-box-title siimple--color-white">React Todo App</h1>
         <Form handleAdd={this.handleAdd} />
         <div className="siimple-rule"></div>
-        <List todos={this.state.todo} handleRemove={this.handleRemove} />
+        <List todos={this.state.todo} />
       </div>
     );
   }

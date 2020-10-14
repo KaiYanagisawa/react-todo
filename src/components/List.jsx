@@ -1,7 +1,7 @@
 import React from 'react';
 
 let style = {
-    maxWidth: '700px',
+    maxWidth: '700px'
 };
 
 let btn = {

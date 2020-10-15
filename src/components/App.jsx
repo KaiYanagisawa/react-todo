@@ -16,11 +16,13 @@ export default class App extends Component {
   handleAdd(e) {
     e.preventDefault();
     // フォームから受け取ったデータをオブジェクトに挿入して、stateのtodo配列に追加
-    this.state.todo.push({ title: e.target.title.value });
+    this.state.todo.push({ title: e.target.title.value , detail: e.target.detail.value });
+    //this.state.todo.push({ detail: e.target.detail.value });
     // setStateを使ってstateを上書き
     this.setState({ todo: this.state.todo });
     // inputのvalueを空に
     e.target.title.value = '';
+    e.target.detail.value = '';
   }
   // データ消去
   handleRemove(i) {
@@ -35,7 +37,7 @@ export default class App extends Component {
         <h1 className="siimple-box-title siimple--color-white">React Todo App</h1>
         <Form handleAdd={this.handleAdd} />
         <div className="siimple-rule"></div>
-        <List todos={this.state.todo} handleRemove={this.handleRemove}/>
+        <List todos={this.state.todo} handleRemove={this.handleRemove} />
       </div>
     );
   }
